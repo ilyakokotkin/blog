@@ -18,7 +18,7 @@ This is a personal blog project built using the MERN stack (MongoDB, Express, Re
 Node.js and npm installed.
 MongoDB installed or a MongoDB Atlas account.
 
-## Running Locally
+### Running Locally
 
 Clone the repository:
 
