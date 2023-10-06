@@ -6,10 +6,10 @@ This is a personal blog project built using the MERN stack (MongoDB, Express, Re
 
 ## Technologies Used
 
-MongoDB: A NoSQL database to store blog posts and other data.
-Express: A web application framework for Node.js to build the API.
-React: A JavaScript library for building the front-end interface.
-Node.js: A JavaScript runtime to execute server-side code.
+- MongoDB: A NoSQL database to store blog posts and other data. 
+- Express: A web application framework for Node.js to build the API.
+- React: A JavaScript library for building the front-end interface.
+- Node.js: A JavaScript runtime to execute server-side code.
 
 ## Getting Started
 
