@@ -3,11 +3,21 @@ const app = express();
 const multer = require('multer');
 const cors = require('cors');
 const mongoose = require('mongoose');
-const uploadMiddleware = multer({ dest: 'uploads/' });
 const Post = require('./models/Post.js');
 require('dotenv').config();
 
+const storage = multer.diskStorage({
+  destination: function(req, file, cb) {
+    cb(null, 'uploads/')
+  },
+  filename: function(req, file, cb) {
+    cb(null, Date.now() + '-' + file.originalname)
+  }
+});
 
+const uploadMiddleware = multer({ storage: storage });
+
+app.use('/uploads', express.static('uploads'));
 app.use(cors());
 app.use(express.json());
 
@@ -48,6 +58,16 @@ app.get('/posts', async (req, res) => {
     res.status(400).json({ message: 'Error fetching posts', error });
   }
 });
+
+app.get('/posts/:id', async (req, res) => {
+  try {
+    const post = await Post.findById(req.params.id);
+    res.status(200).json(post);
+  } catch (error) {
+    res.status(400).json({ message: 'Error fetching single post', error });
+  }
+});
+
 
 
 app.listen(4000, () => {

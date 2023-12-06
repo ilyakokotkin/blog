@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Post() {
   const [posts, setPosts] = useState([]);
@@ -13,14 +14,13 @@ export default function Post() {
 
   return (
     <div>
-      {posts.map(post => (
-        <div key={post._id} className='post'>
-          <div className='image'>
-            {/* You can replace this with the actual image path if you are storing images */}
-            <img src="https://techcrunch.com/wp-content/uploads/2022/09/instacart-logo.jpg?w=730&crop=1" alt=""></img>
-          </div>
-          <div className='texts'>
-            <h2>{post.title}</h2>
+    {posts.map(post => (
+      <div key={post._id} className='post'>
+        <div className='image'>
+        <img src={`http://localhost:4000/uploads/${post.cover}`} alt="Post cover" />
+        </div>
+        <div className='texts'>
+            <h2><Link to={`/posts/${post._id}`} style={{ textDecoration: 'none', color: 'inherit'}}>{post.title}</Link></h2>
             <p className='info'>
               <a className='author'>Ilya Kokotkin</a>
               <time>{new Date(post.createdAt).toLocaleString()}</time>
